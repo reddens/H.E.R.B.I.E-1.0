@@ -1,0 +1,63 @@
+#:kivy 1.2.0
+<MyGridLayout>:
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        padding: 50
+        spacing: 20
+
+        Image: 
+            id: picture
+            source: 'herb.gif'
+            anim_delay: 0.03
+            mipmap: True
+            allow_stretch: False
+            keep_ratio: False
+
+        Label: 
+            id: name_label
+            text: "H.E.R.B.I.E: Hello, How Can I Help You?"
+            font_size: 15
+        GridLayout:
+            cols: 2
+
+            TextInput: 
+                id: name_input
+                write_tab: False
+                multiline: False
+                on_text_validate: root.release()
+                size_hint: (.8, .1)
+                size_hint_y: None
+                height: 110
+            
+            Button: 
+                size_hint: (.2, .1)
+                font_size: 25
+                size_hint_y: None
+                height: 110
+                on_press: root.press()
+                on_release: root.release()
+                background_color: 1,1,1,1
+
+                Image:
+                    id: buttonimg
+                    source: "send.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+        Button: 
+            size_hint: (1, 1)
+            size_hint_y: None
+            height: 60
+            pos_hint: {'center_x':0.5}
+            font_size: 32
+            on_press: root.change()
+            on_release: root.speak()
+            background_color: 0,0,0,0
+
+            Image:
+                id: mic_img
+                source: "mic.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
